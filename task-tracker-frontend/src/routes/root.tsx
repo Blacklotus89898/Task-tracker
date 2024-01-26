@@ -1,12 +1,14 @@
-import {Outlet} from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import Navbar from "../components/Navbar"
+import MyContextProvider from "../context/MyContextProvider"
 export default function Root() {
-
     return (
 
         <>
-        <Navbar></Navbar>
-        <Outlet></Outlet>
+            <MyContextProvider>
+                <Navbar></Navbar>
+                <Outlet></Outlet>
+            </MyContextProvider>
         </>
     )
 }

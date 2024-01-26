@@ -9,7 +9,7 @@ import {
 import Root from "./routes/root.tsx"
 import ErrorPage from './components/errorPage.jsx';
 import ChildComponent from './components/childComponent.tsx';
-import NewTask from './components/NewTask.tsx';
+import NewTask from './components/NewTask.jsx';
 import Home from './components/Home.tsx';
 
 const router = createBrowserRouter([

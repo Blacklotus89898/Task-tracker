@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import MyContext from "../context/MyContext";
 
 export default function NewTask() {
     const [title, setTitle] = useState("");
     const [date, setDate] = useState("");
     const [color, setColor] = useState("");
     const [number, setNumber] = useState(0);
-    const [data, setData] = useState(0);
+    const [data,] = useState(0);
+    const {contextValue, updateContextValue} = useContext(MyContext);
+
 
     useEffect(() => {
         // Function to fetch data
@@ -48,10 +51,12 @@ export default function NewTask() {
                         <div></div>
 
                         <input name="title" value={title} 
-                         onChange={(e) => setTitle(e.target.value)}
+                         onChange={(e) => {setTitle(e.target.value);
+                        updateContextValue([e.target.value]);}
+                        }
                         type="text" 
                         
-                        className=" border border-8 border-red-500 border-solid p-4 rounded-xl" />
+                        className=" border-8 border-red-500 border-solid p-4 rounded-xl" />
                     </div>
                     <div className="flex-col">
 
@@ -79,7 +84,7 @@ export default function NewTask() {
                         <input type="number" 
                          onChange={(e) => setNumber(parseInt(e.target.value))}
                     
-                        className="border border-8 border-red-500"/>
+                        className="border-8 border-red-500"/>
                         </div>
                     </div>
                 </form>
@@ -98,6 +103,9 @@ export default function NewTask() {
                     </ul>
                     <ul>
                         <li>Weather: {data}</li>
+                    </ul>
+                    <ul>
+                        <li>Context: {contextValue}</li>
                     </ul>
                 </div>
 
