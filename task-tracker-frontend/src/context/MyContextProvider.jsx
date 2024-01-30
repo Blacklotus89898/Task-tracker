@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import MyContext from "./MyContext";
 
+
+// export const  MyContext = createContext({});
+
 function MyContextProvider({children}) {
-    const [contextValue, setContextValue] = useState();
+    const [contextValue, setContextValue] = useState(["koko"]);
+
     const updateContextValue = (val) => {
-        setContextValue(val);
+        setContextValue([...contextValue, val]);
     }
+
 
     return (
         <MyContext.Provider value={{contextValue, updateContextValue}}>
@@ -14,4 +19,5 @@ function MyContextProvider({children}) {
     )
 }
 
-export default MyContextProvider;
+
+export default MyContextProvider

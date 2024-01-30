@@ -7,6 +7,7 @@ export default function Home() {
         <>
             <div> Welcome to home!!!</div>
             <p>The value of the context: {contextValue}</p>
+            
         </>
     )
 }
