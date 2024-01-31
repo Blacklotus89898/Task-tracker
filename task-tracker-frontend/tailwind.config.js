@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+import react from '@vitejs/plugin-react';
+// import postcss from 'rollup-plugin-postcss';
+
 export default {
   content: [
     "./index.html",
@@ -7,6 +10,6 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [react(), ],
 }
 

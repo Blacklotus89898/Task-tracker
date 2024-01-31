@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
 import './index.css'
 import {
   createBrowserRouter,
@@ -10,7 +9,8 @@ import {
 import Root from "./routes/root.tsx"
 import ErrorPage from './components/errorPage.jsx';
 import ChildComponent from './components/childComponent.tsx';
-import NewTask from './components/NewTask.tsx';
+import NewTask from './components/NewTask.jsx';
+import TaskList from './components/TaskList.jsx';
 import Home from './components/Home.tsx';
 
 const router = createBrowserRouter([
@@ -30,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/new",
         element: <NewTask/>,
+      },
+      {
+        path: "/taskList",
+        element: <TaskList></TaskList>,
       },
     ]
   },
