@@ -15,7 +15,7 @@ export default function NewTask() {
   };
 
   const c = (val) => {
-    updateContextValue(val);
+    updateContextValue([...contextValue, val]);
   };
 
   return (
@@ -81,7 +81,6 @@ export default function NewTask() {
               </button>
             </div>
           </div>
-          {/* </div> */}
         </form>
 
         <div>
