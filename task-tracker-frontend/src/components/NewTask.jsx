@@ -14,7 +14,7 @@ export default function NewTask() {
     event.preventDefault();
   };
 
-  const c = (val) => {
+  const addTask = (val) => {
     updateContextValue([...contextValue, val]);
   };
 
@@ -74,7 +74,7 @@ export default function NewTask() {
               <button
                 className="border-2 border-red-100 p-10 py-3 rounded-full"
                 onClick={() => {
-                  c(title);
+                  addTask({ title: title, date: date, number:number, color: color});
                 }}
               >
                 Create
@@ -101,7 +101,7 @@ export default function NewTask() {
             <li>Weather: {data}</li>
           </ul>
           <ul>
-            <li>Context: {contextValue}</li>
+            {/* <li>Context: {...contextValue}</li> */}
           </ul>
         </div>
       </div>

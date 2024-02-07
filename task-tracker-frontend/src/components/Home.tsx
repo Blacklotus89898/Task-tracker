@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import MyContext from "../context/MyContext";
 
 export default function Home() {
@@ -6,7 +6,8 @@ export default function Home() {
     return (
         <>
             <div> Welcome to home!!!</div>
-            <p>The value of the context: {contextValue}</p>
+            <h3>Total task: {contextValue.length}</h3>
+            {/* <p>The value of the context: {contextValue.map((e, ) => { e.name})}</p> */}
 
         </>
     )

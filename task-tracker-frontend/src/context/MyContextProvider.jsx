@@ -5,7 +5,7 @@ import MyContext from "./MyContext";
 // export const  MyContext = createContext({});
 
 function MyContextProvider({children}) {
-    const [contextValue, setContextValue] = useState(["koko"]);
+    const [contextValue, setContextValue] = useState([{title:"Koko", status: "lol"}]);
 
     const updateContextValue = (val) => {
         setContextValue(val);
