@@ -14,8 +14,14 @@ export default function NewTask() {
     event.preventDefault();
   };
 
-  const addTask = (val) => {
-    updateContextValue([...contextValue, val]);
+  const addTask = () => {
+    const newTask = {
+      title: title,
+      date: date,
+      color: color,
+      number: number,
+    };
+    updateContextValue([...contextValue, newTask]);
   };
 
   return (
@@ -74,7 +80,7 @@ export default function NewTask() {
               <button
                 className="border-2 border-red-100 p-10 py-3 rounded-full"
                 onClick={() => {
-                  addTask({ title: title, date: date, number:number, color: color});
+                  addTask();
                 }}
               >
                 Create
@@ -82,28 +88,6 @@ export default function NewTask() {
             </div>
           </div>
         </form>
-
-        <div>
-          Result
-          <ul>
-            <li>Title: {title}</li>
-          </ul>
-          <ul>
-            <li>Color: {color}</li>
-          </ul>
-          <ul>
-            <li>Date: {date}</li>
-          </ul>
-          <ul>
-            <li>Number: {number}</li>
-          </ul>
-          <ul>
-            <li>Weather: {data}</li>
-          </ul>
-          <ul>
-            {/* <li>Context: {...contextValue}</li> */}
-          </ul>
-        </div>
       </div>
     </>
   );
