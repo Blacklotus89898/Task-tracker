@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import MyContext from "../context/MyContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function NewTask() {
   const [title, setTitle] = useState("");
@@ -9,9 +9,12 @@ export default function NewTask() {
   const [number, setNumber] = useState(0);
   // const [data] = useState(0);
   const { contextValue, updateContextValue } = useContext(MyContext);
-
+  // const history = useHistory();
+  const navigate = useNavigate();
+  // prevents refreshing
   const handleSubmit = (event) => {
     event.preventDefault();
+    navigate('/taskList');
   };
 
   const addTask = () => {
@@ -20,6 +23,7 @@ export default function NewTask() {
       date: date,
       color: color,
       number: number,
+      status: "Created"
     };
     updateContextValue([...contextValue, newTask]);
   };
@@ -29,6 +33,7 @@ export default function NewTask() {
       <div className="">
         <form
           action="/home"
+          // onSubmit={handleSubmit}
           onSubmit={handleSubmit}
           className="flex m-4 p-2 justify-around  border border-solid border-10 rounded-full border-blue-600 "
         >
