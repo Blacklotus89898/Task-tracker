@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import MyContext from "../context/MyContext";
 
 export default function Home() {
-    const { contextValue } = useContext(MyContext);
+    const { contextValue} = useContext(MyContext);
     return (
         <>
             <div> Welcome to home!!!</div>

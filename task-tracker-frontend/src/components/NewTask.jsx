@@ -7,7 +7,7 @@ export default function NewTask() {
   const [date, setDate] = useState("");
   const [color, setColor] = useState("");
   const [number, setNumber] = useState(0);
-  const [data] = useState(0);
+  // const [data] = useState(0);
   const { contextValue, updateContextValue } = useContext(MyContext);
 
   const handleSubmit = (event) => {
