@@ -7,7 +7,7 @@ export default function Home() {
         <>
             <div> Welcome to home!!!</div>
             <h3>Total task: {contextValue.length}</h3>
-            <h3>Total task: {contextValue.filter((t) => t.status == "done").length}</h3>
+            <h3>Task completed: {contextValue.filter((t) => t.status == "Done").length}</h3>
         </>
     )
 }

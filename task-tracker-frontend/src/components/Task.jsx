@@ -2,7 +2,7 @@ import MyContext from "../context/MyContext";
 import { useContext } from "react";
 import "./myStyle.css";
 
-function TaskList() {
+function Task({index, item}) {
   const { contextValue, updateContextValue } = useContext(MyContext);
 
   const handleDeleteTask = (index) => {
@@ -25,10 +25,6 @@ function TaskList() {
 
   return (
     <>
-      <h1>Todos </h1>
-      <ul>
-        {contextValue.length != 0 ? (
-          contextValue.map((item, index) => (
             <li key={index} className="border-8 border-blue-200 ">
               <div className="flex justify-between items-center">
                 <div className="flex justify-between">
@@ -57,13 +53,9 @@ function TaskList() {
                 </div>
               </div>
             </li>
-          ))
-        ) : (
-          <div>No task to render</div>
-        )}
-      </ul>
+
     </>
   );
 }
 
-export default TaskList;
+export default Task;
