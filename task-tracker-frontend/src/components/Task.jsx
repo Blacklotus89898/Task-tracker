@@ -22,13 +22,13 @@ function Task({ index, item }) {
 
   const viewContent = () => {
     setDisplayContent(!diplayContent);
-  }
+  };
 
   // for debugging local db
-//   const checkContext = () => {
-//     console.log(contextValue.length);
-//     console.log(contextValue);
-//   };
+  //   const checkContext = () => {
+  //     console.log(contextValue.length);
+  //     console.log(contextValue);
+  //   };
 
   return (
     <>
@@ -42,11 +42,8 @@ function Task({ index, item }) {
               <div style={{ color: "green" }}>Status: {item.status}</div>
             )}
             <div className="px-4">
-            {diplayContent && ( 
-            <p> {JSON.stringify(item)}</p>
-        )}
+              {diplayContent && <p> {JSON.stringify(item)}</p>}
             </div>
-            
           </div>
 
           <div className="text-right">

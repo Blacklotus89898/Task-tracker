@@ -8,7 +8,7 @@ function TaskList() {
 
   return (
     <>
-      <h1>Todos </h1>
+      <h1 className="text-5xl px-8 py-4">Todos </h1>
       <ul>
         {contextValue.length != 0 ? (
           contextValue.map((item, index) => (
