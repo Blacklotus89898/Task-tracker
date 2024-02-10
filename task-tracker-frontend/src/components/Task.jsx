@@ -1,5 +1,5 @@
 import MyContext from "../context/MyContext";
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef, useCallback } from "react";
 import "./myStyle.css";
 
 function Task({ index, item }) {
@@ -29,65 +29,63 @@ function Task({ index, item }) {
 
   // dragging
   // const [draggedItem, setDraggedItem] = useState(); 
-  const di = useRef(null); //useRef instead
-  const doi = useRef(null); //useRef instead
+  const di = useRef(); //useRef instead
+  const doi = useRef(); //useRef instead
+  const [dragStartIndex, setDragStartIndex] = useState(null);
+  const [dragOverIndex, setDragOverIndex] = useState(null);
 
   const handleDragStart = (e, index) => {
+    
     di.current  = index;
-    console.log("index1",index)
+    setDragStartIndex(index);
+    e.dataTransfer.setData("text/plain", String(index));
+    // console.log(di.current);
+    console.log(index);
+
   }
 
-  const handleDragOver = (index) => {
+  const handleDragOver =  useCallback((e, index) => {
+    e.preventDefault(); // Prevent default behavior to allow dropping
+    // e.stopPropagation();
     doi.current = index;
-    console.log("index2", index)
+    // console.log("Drag Over Index:", index);
+    setDragOverIndex(index)
+    console.log(dragOverIndex)
+    console.log(doi.current)
+    console.log(index)
+    // console.log(doi.current);
 
-    // const oldList = contextValue;
-    // const draggeOverItem = contextValue[index]; //old value
-    // const dO = dI.current;
+  }, []);
 
-    // if (di.current == doi.current) {
-    //   console.log("no change");
-    //   setNewList(contextValue);
-    //   return;
-    // }
-
-    // console.log("Update");
-    // // setNewList(contextValue.filter((item) => item != di.current));
- 
-    // console.log("list:", contextValue);
-    // console.log("DI item", item);
-
-    // const ll = [...contextValue];
-    // ll.splice(di.current, 1);
-    // console.log("New klist1", ll);
-    // ll.splice(di.current, 0, item);
-    // console.log("New list2", ll);
-    // setNewList(ll);
-    // console.log("New list2", newList);
-  }
-
-  const handleDragEnd = () => {
+  const handleDragEnd = (e) => {
+    e.preventDefault(); // Prevent default behavior to allow dropping
+    const overIndex = Number(e.dataTransfer.getData("text/plain"));
+    // e.stopPropagation();
+    
+    console.log(dragStartIndex)
+    
+    console.log(dragOverIndex)
+    // console.log(index);
+    // console.log(di.current)
+    console.log(doi.current)
     const l1 = [...contextValue];
-    const dii = l1[di.current];
-    console.log("from to ", di.current, doi.current);
-    l1.splice(di.current, 1);
+    const dii = l1[overIndex];
+    console.log(dragStartIndex)
+    console.log(dragOverIndex)
+    console.log(dii);
+    
 
-    console.log("S1", l1);
-    // console.log("S1", l2);
+    // l1.splice(di.current, 1);
+    // l1.splice(doi.current, 0, dii);
 
-    l1.splice(doi.current, 0,  dii);
-    console.log("S2",l1);
-    doi.current = null;
+    l1.splice(overIndex, 1);
+    l1.splice(dragOverIndex, 0, dii);
+
     di.current = null;
-    // updateContextValue(contextValue); //update at the end of drag
+    doi.current = null;
+    console.log(l1);
     updateContextValue(l1); //update at the end of drag
-    // setDraggedItem(null);
-    // di.current = null;
-    // doi.current = null;
 
-    // setNewList(contextValue);
-
-    // setIsDragging(false);
   }
   // for debugging local db
   //   const checkContext = () => {
@@ -98,14 +96,20 @@ function Task({ index, item }) {
   return (
     <>
       <li key={index} className="border-8 border-blue-200 "
-              >
-        <div className="flex justify-between items-center"
+        draggable
         
-            // className={`draggable-item ${isDragging ? 'dragging' : ''}`}
-            onDragEnter={() => handleDragOver(index)}
-            onDragStart={(e) => handleDragStart(e, index)}
-            onDragEnd={handleDragEnd}
-            draggable="true"
+        // className={`draggable-item ${isDragging ? 'dragging' : ''}`}
+        >
+        <div className="flex justify-between items-center"
+          onDragStart={(e) => handleDragStart(e, index)}
+          onDragOver={(e) => handleDragOver(e, index)}
+          onDrop={handleDragEnd}
+          draggable
+        
+      
+        // onDragEnd={
+        //   handleDragEnd
+        // }
         >
           <div className="flex justify-between">
             <div className="px-8">Task name: {item.title}</div>
