@@ -95,7 +95,7 @@ function Task({ index, item }) {
 
   return (
     <>
-      <li key={index} className="border-8 border-blue-200 "
+      <li key={index} className="border-8 border-blue-200 rounded-full"
         draggable
         
         // className={`draggable-item ${isDragging ? 'dragging' : ''}`}
@@ -123,7 +123,7 @@ function Task({ index, item }) {
             </div>
           </div>
 
-          <div className="text-right">
+          <div className="text-right flex-none">
             <button className="btn " onClick={() => toggleStatus(index)}>
               Complete
             </button>

@@ -11,7 +11,7 @@ import ErrorPage from './components/errorPage.jsx';
 import ChildComponent from './components/childComponent.tsx';
 import NewTask from './components/NewTask.jsx';
 import TaskList from './components/TaskList.jsx';
-import Home from './components/Home.tsx';
+import Home from './components/Home.jsx';
 
 const router = createBrowserRouter([
   {

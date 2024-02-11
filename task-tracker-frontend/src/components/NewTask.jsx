@@ -6,7 +6,7 @@ export default function NewTask() {
   // data fields
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState();
   const [number, setNumber] = useState(0);
   const { contextValue, updateContextValue } = useContext(MyContext);
   const navigate = useNavigate();  
@@ -37,8 +37,8 @@ export default function NewTask() {
           onSubmit={handleSubmit}
           className="flex m-4 p-2 justify-around  border border-solid border-10 rounded-full border-blue-600 "
         >
-          <div className="flex-col border border-10 border-teal-100 self-center">
-            <label htmlFor="title">Title of the NewTask</label>
+          <div className="flex-col self-center  justify-center">
+            <label htmlFor="title" className="block text-center">NewTask: {title}</label>
             <div></div>
 
             <input
@@ -48,7 +48,7 @@ export default function NewTask() {
                 setTitle(e.target.value);
               }}
               type="text"
-              className=" border-8 border-red-500 border-solid p-4 rounded-xl"
+              className=" border-4 border-red-200 border-solid p-4 rounded-full"
             />
           </div>
           <div className="flex-col">
@@ -56,11 +56,12 @@ export default function NewTask() {
             <input
               type="color"
               onChange={(e) => setColor(e.target.value)}
-              className="w-4 h-4"
+              className="w-4 h-4 border-2 rounded-full  border-red-200"
             />
             <div>
-              <label htmlFor="">Date:</label>
-              <input type="date" onChange={(e) => setDate(e.target.value)} />
+              <label htmlFor="">Date: </label>
+              <input className=" border-2 rounded-full  border-red-200"
+              type="date" onChange={(e) => setDate(e.target.value)} />
             </div>
 
             <div>
@@ -68,7 +69,7 @@ export default function NewTask() {
               <input
                 type="number"
                 onChange={(e) => setNumber(parseInt(e.target.value))}
-                className="border-8 border-red-500"
+                className="border-2 border-red-100 rounded-full"
               />
             </div>
           </div>
@@ -83,7 +84,7 @@ export default function NewTask() {
                 Home
               </Link>
               <button
-                className="border-2 border-red-100 p-10 py-3 rounded-full"
+                className="border-2 border-blue-300 p-10 py-3 rounded-full"
                 onClick={() => {
                   addTask();
                 }}
