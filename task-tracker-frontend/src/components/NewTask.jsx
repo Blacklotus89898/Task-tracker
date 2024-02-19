@@ -29,10 +29,22 @@ export default function NewTask() {
     updateContextValue([...contextValue, newTask]);
   };
 
+  const clearInput = (event) => {
+    // document.getElementById("newTaskForm").reset();
+    event.preventDefault();
+    // //  colorInput.set
+    //   setColor(null);
+      // setDate();
+      setNumber(0);
+      setTitle("");
+
+  };
+
   return (
     <>
       <div className="">
-        <form
+        <form 
+        id="newTaskForm"
           action="/home"
           onSubmit={handleSubmit}
           className="flex m-4 p-2 justify-around  border border-solid border-10 rounded-full border-blue-600 "
@@ -51,25 +63,32 @@ export default function NewTask() {
               className=" border-4 border-red-200 border-solid p-4 rounded-full"
             />
           </div>
-          <div className="flex-col">
+          <div className="flex-col" >
+            <div className=" border-2 rounded-full  border-red-200">
+
             <label htmlFor="color">Color Picker: </label>
-            <input
+            <input 
+            id="colorInput"
               type="color"
               onChange={(e) => setColor(e.target.value)}
               className="w-4 h-4 border-2 rounded-full  border-red-200"
-            />
-            <div>
-              <label htmlFor="">Date: </label>
-              <input className=" border-2 rounded-full  border-red-200"
+              />
+              </div>
+            <div className=" border-2 rounded-full  border-red-200">
+              <label  htmlFor="">Date: </label>
+              <input 
               type="date" onChange={(e) => setDate(e.target.value)} />
             </div>
 
-            <div>
+            <div className=" border-2 rounded-full  border-red-200">
+            <input type="file" id="input" name="input" accept="image/png, image/jpeg"/>
+            </div>
+
+            <div className=" border-2 rounded-full  border-red-200">
               <label htmlFor="">Number: </label>
               <input
                 type="number"
                 onChange={(e) => setNumber(parseInt(e.target.value))}
-                className="border-2 border-red-100 rounded-full"
               />
             </div>
           </div>
@@ -81,8 +100,16 @@ export default function NewTask() {
                 className="border-2 border-red-100 p-10 py-3 rounded-full"
               >
                 {" "}
-                Home
+                Go Back
               </Link>
+              <button
+                className="border-2 border-blue-300 p-10 py-3 rounded-full"
+                onClick={(e) => {
+                  clearInput(e);
+                }}
+              >
+                Clear
+              </button>
               <button
                 className="border-2 border-blue-300 p-10 py-3 rounded-full"
                 onClick={() => {

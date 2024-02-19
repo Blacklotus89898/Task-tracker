@@ -13,7 +13,7 @@ import NewTask from './components/NewTask.jsx';
 import TaskList from './components/TaskList.jsx';
 import Home from './components/Home.jsx';
 
-const router = createBrowserRouter([
+const router = createBrowserRouter([ //implement history
   {
     path: "/",
     element: <Root/>,
