@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { Children, useState } from 'react';
 
-const Toy = () => {
+const Draggable = ({children}) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
@@ -39,10 +39,11 @@ const Toy = () => {
       onMouseUp={stopDrag}
     >
       Drag me! 
+      {children}
     </div>
   );
 };
 
-export default Toy; //add release transition
+export default Draggable; //add release transition
 //performance depends on browser
 

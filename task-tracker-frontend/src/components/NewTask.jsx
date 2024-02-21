@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import MyContext from "../context/MyContext";
 import { Link, useNavigate } from "react-router-dom";
-import Toy from "./Toy.jsx";
+import Draggable from "./Draggable.jsx";
 
 export default function NewTask() {
   // data fields
@@ -123,7 +123,11 @@ export default function NewTask() {
           </div>
         </form>
       </div>
-      <Toy></Toy>
+      <Draggable>
+        <button>Clogjsdfjkhlgdsk</button>
+        <input type="button" value="" />
+                <input type="checkbox" name="" id="" />
+        </Draggable>
     </>
   );
 }

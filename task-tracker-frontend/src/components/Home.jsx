@@ -4,29 +4,29 @@ import "./Home.css";
 
 // dashboard
 
-const Arc = ({ radius, startAngle, endAngle }) => {
-  // Convert degrees to radians
-  const startRadians = (startAngle * Math.PI) / 180;
-  const endRadians = (endAngle * Math.PI) / 180;
+// const Arc = ({ radius, startAngle, endAngle }) => {
+//   // Convert degrees to radians
+//   const startRadians = (startAngle * Math.PI) / 180;
+//   const endRadians = (endAngle * Math.PI) / 180;
 
-  // Calculate arc coordinates
-  const x1 = radius * Math.cos(startRadians);
-  const y1 = radius * Math.sin(startRadians);
-  const x2 = radius * Math.cos(endRadians);
-  const y2 = radius * Math.sin(endRadians);
+//   // Calculate arc coordinates
+//   const x1 = radius * Math.cos(startRadians);
+//   const y1 = radius * Math.sin(startRadians);
+//   const x2 = radius * Math.cos(endRadians);
+//   const y2 = radius * Math.sin(endRadians);
 
-  // Determine the largeArcFlag
-  const largeArcFlag = endAngle - startAngle <= 180 ? 0 : 1;
+//   // Determine the largeArcFlag
+//   const largeArcFlag = endAngle - startAngle <= 180 ? 0 : 1;
 
-  // Path data string
-  const pathData = `M ${x1} ${y1} A ${radius} ${radius}, 0, ${largeArcFlag}, 1, ${x2} ${y2}`;
+//   // Path data string
+//   const pathData = `M ${x1} ${y1} A ${radius} ${radius}, 0, ${largeArcFlag}, 1, ${x2} ${y2}`;
 
-  return (
-    <svg width="200" height="200">
-      <path d={pathData} stroke="black" fill="transparent" />
-    </svg>
-  );
-};
+//   return (
+//     <svg width="200" height="200">
+//       <path d={pathData} stroke="black" fill="transparent" />
+//     </svg>
+//   );
+// };
 
 export default function Home() {
   const { contextValue } = useContext(MyContext);
@@ -38,6 +38,15 @@ export default function Home() {
       (contextValue.filter((t) => t.status === "Done").length * 100) /
         contextValue.length
     );
+
+    const pieChartData = [
+      { value: 45, color: 'red' },
+      { value: 30, color: 'green' },
+      { value: 25, color: 'blue' },
+    ];
+  
+    // Draw the pie chart
+    drawPieChart('pieChartCanvas', pieChartData);
   }, [contextValue]);
 
   function drawPieChart(canvasId, data) {
@@ -72,14 +81,7 @@ export default function Home() {
   }
 
   // Example data for the pie chart
-  const pieChartData = [
-    { value: 45, color: 'red' },
-    { value: 30, color: 'green' },
-    { value: 25, color: 'blue' },
-  ];
 
-  // Draw the pie chart
-  drawPieChart('pieChartCanvas', pieChartData);
 
   return (
     <>
@@ -101,7 +103,7 @@ export default function Home() {
           className="element1 absolute top-0  z-10 border-4 border-red-400"
           style={{ width: `${500}px`, height: "10px" }}
         ></div>
-          <Arc radius={40} startAngle={0} endAngle={-140} />
+          {/* <Arc radius={40} startAngle={0} endAngle={-140} /> */}
           <canvas id="pieChartCanvas" width="400" height="400"></canvas>
       </div>
 
