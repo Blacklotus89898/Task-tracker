@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import MyContext from "../context/MyContext";
 import { Link, useNavigate } from "react-router-dom";
+import Toy from "./Toy.jsx";
 
 export default function NewTask() {
   // data fields
@@ -122,6 +123,7 @@ export default function NewTask() {
           </div>
         </form>
       </div>
+      <Toy></Toy>
     </>
   );
 }

@@ -17,6 +17,7 @@ export default function Home() {
 
   return (
     <>
+    {/* migrate some stuff to a dashboard and create a header instead of navbar, pie chart using js and css + canvas */}
       <div className="text-center text-2xl p-16">
         <div> Welcome to home!!!</div>
         <h3>Total task: {contextValue.length}</h3>
