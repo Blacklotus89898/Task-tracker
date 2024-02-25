@@ -123,8 +123,8 @@ export default function NewTask() {
           </div>
         </form>
       </div>
-      <Draggable>
-        <button>Clogjsdfjkhlgdsk</button>
+      <Draggable collapseProps={{collapseable: true}}>
+        <button>Children component</button>
         <input type="button" value="" />
                 <input type="checkbox" name="" id="" />
         </Draggable>
