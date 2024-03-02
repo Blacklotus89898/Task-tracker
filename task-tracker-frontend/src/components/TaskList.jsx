@@ -1,11 +1,11 @@
 import MyContext from "../context/MyContext";
-import { useContext, useState, useRef } from "react";
+import { useContext } from "react";
 import "./myStyle.css";
 import "./TaskList.css"
 import Task from "./task.jsx";
 
 function TaskList() {
-  const  {contextValue, updateContextValue } = useContext(MyContext);
+  const  {contextValue } = useContext(MyContext);
 
 
   return (
@@ -16,7 +16,7 @@ function TaskList() {
         (
           contextValue.map((item, index) => (
             <Task index={index} item={item} key={index} 
-            ></Task>
+            ></Task> //draggable a lot better tp use than the reorganizing the list
           ))
         ) : (
           <div>No task to render</div>

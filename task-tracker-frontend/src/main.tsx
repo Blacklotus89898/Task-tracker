@@ -13,7 +13,7 @@ import NewTask from './components/NewTask.jsx';
 import TaskList from './components/TaskList.jsx';
 import Home from './components/Home.jsx';
 
-const router = createBrowserRouter([ //implement history
+const router = createBrowserRouter([ //implement history // update a task + add a assignee + progession + color conditional
   {
     path: "/",
     element: <Root/>,

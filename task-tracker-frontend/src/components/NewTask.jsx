@@ -4,7 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Draggable from "./Draggable.jsx";
 
 export default function NewTask() {
-  // data fields
+  // data fields 
+  // TODO: make a single state
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [color, setColor] = useState();
@@ -34,7 +35,7 @@ export default function NewTask() {
     // document.getElementById("newTaskForm").reset();
     event.preventDefault();
     // //  colorInput.set
-    //   setColor(null);
+      setColor("#000000");
       // setDate();
       setNumber(0);
       setTitle("");
@@ -71,6 +72,7 @@ export default function NewTask() {
             <input 
             id="colorInput"
               type="color"
+              value={color}
               onChange={(e) => setColor(e.target.value)}
               className="w-4 h-4 border-2 rounded-full  border-red-200"
               />
@@ -89,6 +91,7 @@ export default function NewTask() {
               <label htmlFor="">Number: </label>
               <input
                 type="number"
+                value={number}
                 onChange={(e) => setNumber(parseInt(e.target.value))}
               />
             </div>
@@ -123,8 +126,13 @@ export default function NewTask() {
           </div>
         </form>
       </div>
-      <Draggable collapseProps={{collapseable: true}}>
+      <Draggable collapseProps={{collapseable: true}} dimension={{width: 80, height: 24}}>
         <button>Children component</button>
+        <input type="button" value="" />
+                <input type="checkbox" name="" id="" />
+        </Draggable>
+      <Draggable collapseProps={{collapseable: true}} dimension={{width: 80, height: 24}}>
+        <button>Drag 2</button>
         <input type="button" value="" />
                 <input type="checkbox" name="" id="" />
         </Draggable>

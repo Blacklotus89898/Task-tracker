@@ -28,7 +28,7 @@ import "./Home.css";
 //   );
 // };
 
-export default function Home() {
+export default function Home() { //current dashboard
   const { contextValue } = useContext(MyContext);
 
   const [progressValue, setProgressValue] = useState(50);
@@ -40,14 +40,13 @@ export default function Home() {
     );
 
     const pieChartData = [
-      { value: 45, color: 'red' },
-      { value: 30, color: 'green' },
-      { value: 25, color: 'blue' },
+      { value: 3.6*100-progressValue, color: 'red' },
+      { value: 3.6*progressValue, color: 'green' },
     ];
   
     // Draw the pie chart
     drawPieChart('pieChartCanvas', pieChartData);
-  }, [contextValue]);
+  }, [contextValue, progressValue]);
 
   function drawPieChart(canvasId, data) {
     const canvas = document.getElementById(canvasId);
@@ -96,15 +95,17 @@ export default function Home() {
       </div>
       <div className="relative text-center flex justify-center items-center">
         <div
-          className="element2 absolute top-0  z-20 border-4 border-blue-200 bg-blue-300"
+          className="element2 absolute top-0 left-100 z-20 border-4 border-blue-200 bg-blue-300"
           style={{ width: `${progressValue * 5}px`, height: "10px" }}
         ></div>
         <div
           className="element1 absolute top-0  z-10 border-4 border-red-400"
           style={{ width: `${500}px`, height: "10px" }}
         ></div>
-          {/* <Arc radius={40} startAngle={0} endAngle={-140} /> */}
+        <div className=" absolute top-10">
           <canvas id="pieChartCanvas" width="400" height="400"></canvas>
+        </div>
+
       </div>
 
     </>

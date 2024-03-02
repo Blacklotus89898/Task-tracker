@@ -1,6 +1,6 @@
-import React, { Children, useState } from "react";
+import React, { useState } from "react";
 
-const Draggable = ({ children, collapseProps }) => {
+const Draggable = ({ children, collapseProps, dimension }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
@@ -28,15 +28,23 @@ const Draggable = ({ children, collapseProps }) => {
   const stopDrag = () => {
     setIsDragging(false);
     if (collapseProps.collapseable) {
-      setPosition({ x: (Math.floor(position.x / 300)*300),
-        y: 0});
-        console.log(position);
+      setPosition({
+        x:
+          Math.round(position.x / (4 * parseInt(dimension.width))) *
+          4 *
+          parseInt(dimension.width),
+        y:
+          Math.round(position.y / (4 * parseInt(dimension.height))) *
+          4 *
+          parseInt(dimension.height),
+      });
+      // console.log(position);
     }
   };
 
   return (
     <div
-      className="draggable w-80 border-4 p-10 border-green-600"
+      className={`draggable w-80 h-${dimension.height} border-4 p-10 border-green-600`}
       style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
       onMouseDown={startDrag}
       onMouseMove={drag}
