@@ -1,0 +1,52 @@
+
+.circular-progress-container {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.circular-progress-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  position: relative;
+}
+
+.circular-progress-bar {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  background-color: #4caf50;
+  transform-origin: center center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.circular-progress-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  color: #555;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1; /* Ensure the overlay is on top of other elements */
+  }
+  .koko {
+    position: relative;
+    z-index: 2;
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    /* Ensure the content is above the overlay */
+  } 

@@ -1,0 +1,12 @@
+.draggable-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: grab;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .draggable-item.dragging {
+    background-color: #eee;
+    cursor: grabbing;
+  }
